@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SERIES: Convergencia y Divergencia</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- MathLive: campo matemático visual -->
+<script type="module">
+    import "https://cdn.jsdelivr.net/npm/mathlive/+esm";
+</script>
+
+<!-- MathJax: render de fórmulas -->
+<script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        }
+    };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+    <a class="volver-menu" href="../index.html">
+    <span>←</span>
+    Menú principal
+</a>
+<div class="container">
+
+    <h1>SERIES: Convergencia y Divergencia</h1>
+
+    <p>Tipos de Series</p>
+
+    <div class="form">
+
+        <label>Término general \(a_n\)</label>
+
+        <math-field
+            id="funcion"
+            virtual-keyboard-mode="manual">
+            \frac{1}{n^2}
+        </math-field>
+
+        <div class="teclado-series">
+            <p>Teclado rápido</p>
+
+            <div class="teclas-series">
+                <button type="button" data-insert="n">\(n\)</button>
+                <button type="button" data-insert="n^2">\(n^2\)</button>
+                <button type="button" data-insert="n^3">\(n^3\)</button>
+                <button type="button" data-insert="\frac{#?}{#?}">\(\frac{a}{b}\)</button>
+                <button type="button" data-insert="\sqrt{#?}">\(\sqrt{n}\)</button>
+                <button type="button" data-insert="\left(\frac{1}{2}\right)^n">\(\left(\frac{1}{2}\right)^n\)</button>
+                <button type="button" data-insert="\frac{1}{n}">\(\frac{1}{n}\)</button>
+                <button type="button" data-insert="\frac{1}{n^2}">\(\frac{1}{n^2}\)</button>
+                <button type="button" data-insert="\frac{1}{n(n+1)}">\(\frac{1}{n(n+1)}\)</button>
+                <button type="button" data-insert="\pi">\(\pi\)</button>
+                <button type="button" data-insert="\infty">\(\infty\)</button>
+                <button type="button" id="borrarCampo">⌫</button>
+            </div>
+        </div>
+
+        <div id="resultado"></div>
+
+        <button onclick="calcular()">Calcular Serie</button>
+
+    </div>
+
+    <div class="resultados">
+
+        <h2>Fórmula usada</h2>
+
+        <p class="formula">
+            \( S = \displaystyle\sum_{n=1}^{\infty} a_n \)
+        </p>
+
+        <h2>Pasos</h2>
+        <div id="pasos"></div>
+
+        <h2>Suma</h2>
+        <p id="area"></p>
+
+    </div>
+</div>
+
+<div class="grafiquita">
+    <canvas id="grafica"></canvas>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

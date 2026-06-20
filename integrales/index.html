@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Área bajo la curva</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Área bajo la curva</h1>
+<p>Método de sumas de Riemann</p>
+
+<div class="form">
+
+<label>Función f(x)</label>
+<input id="funcion" placeholder="Ej: x^2 - 4">
+
+<label>Límite inferior (a)</label>
+<input type="number" id="a">
+
+<label>Límite superior (b)</label>
+<input type="number" id="b">
+
+<label>Cantidad de rectángulos</label>
+<input type="number" id="n">
+
+<button onclick="calcular()">Calcular área</button>
+
+</div>
+
+<div class="resultados">
+
+
+
+
+<h2>Procedimiento</h2>
+
+<h3>Área aproximada (Suma de Riemann)</h3>
+<div id="pasosAprox"></div>
+
+<h3>Área exacta (Integral definida)</h3>
+<div id="pasosExacta"></div>
+
+<h2>Área aproximada</h2>
+<p id="area"></p>
+
+<h2>Área exacta</h2>
+<p id="areaExacta"></p>
+
+</div>
+
+</div>
+
+<div class="grafiquita">
+<canvas id="grafica"></canvas>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

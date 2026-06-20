@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrales Impropias | Cálculo Aplicado</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Campo matemático visual -->
+    <script type="module">
+        import "https://cdn.jsdelivr.net/npm/mathlive/+esm";
+    </script>
+
+    <!-- Renderizado de procedimientos -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="app.js"></script>
+</head>
+
+<body>
+
+    <div class="blur"></div>
+    <div class="blur2"></div>
+
+    <header class="barra">
+        <!-- Cambia "menu" por el nombre real de la carpeta de tu menú -->
+        <a class="volver" href="../index.html">
+            <i class="fa-solid fa-arrow-left"></i>
+            Menú principal
+        </a>
+
+        <div class="marca">
+            <i class="fa-solid fa-infinity"></i>
+            Integrales impropias
+        </div>
+    </header>
+
+    <main class="contenedor">
+
+        <section class="encabezado">
+            <span class="subtitulo">Cálculo Aplicado</span>
+
+            <h1>Integrales Impropias</h1>
+
+            <p>
+                Construye una integral, detecta su caso y observa
+                el procedimiento matemático generado automáticamente.
+            </p>
+        </section>
+
+        <section class="casos">
+
+            <article class="tarjeta-caso">
+                <div class="icono-caso">
+                    <i class="fa-solid fa-infinity"></i>
+                </div>
+
+                <div>
+                    <h2>Caso 1</h2>
+                    <p>
+                        Uno o ambos límites de integración contienen
+                        \(+\infty\) o \(-\infty\).
+                    </p>
+                </div>
+            </article>
+
+            <article class="tarjeta-caso">
+                <div class="icono-caso advertencia">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+
+                <div>
+                    <h2>Caso 2</h2>
+                    <p>
+                        La función deja de existir en un extremo o
+                        dentro del intervalo de integración.
+                    </p>
+                </div>
+            </article>
+
+        </section>
+
+        <section class="laboratorio">
+
+            <section class="panel constructor">
+
+                <div class="panel-titulo">
+                    <i class="fa-solid fa-keyboard"></i>
+
+                    <div>
+                        <h2>Construye tu integral</h2>
+                        <p>No necesitas escribir código LaTeX.</p>
+                    </div>
+                </div>
+
+                <div class="ejemplos">
+                    <p>Ejemplos automáticos</p>
+
+                    <button type="button" class="ejemplo" data-ejemplo="potencia">
+                        Potencia
+                    </button>
+
+                    <button type="button" class="ejemplo" data-ejemplo="logaritmo">
+                        Logaritmo
+                    </button>
+
+                    <button type="button" class="ejemplo" data-ejemplo="exponencial">
+                        Exponencial
+                    </button>
+
+                    <button type="button" class="ejemplo" data-ejemplo="arctan">
+                        Arctan
+                    </button>
+
+                    <button type="button" class="ejemplo" data-ejemplo="discontinua">
+                        Discontinua
+                    </button>
+
+                    <button type="button" class="ejemplo" data-ejemplo="sustitucion">
+                        Sustitución
+                    </button>
+                </div>
+
+                <div class="campos-limites">
+
+                    <div>
+                        <label>Límite inferior</label>
+
+                        <math-field
+                            id="limiteInferior"
+                            virtual-keyboard-mode="manual">
+                            -2
+                        </math-field>
+                    </div>
+
+                    <div>
+                        <label>Límite superior</label>
+
+                        <math-field
+                            id="limiteSuperior"
+                            virtual-keyboard-mode="manual">
+                            1
+                        </math-field>
+                    </div>
+
+                </div>
+
+                <label>Función \(f(x)\)</label>
+
+                <math-field
+                    id="integrando"
+                    class="campo-funcion"
+                    virtual-keyboard-mode="manual">
+                    \frac{1}{(x+1)^3}
+                </math-field>
+
+                <div class="teclado">
+                    <p>Teclado rápido</p>
+
+                    <div class="teclas">
+                        <button type="button" data-insert="x">
+                            \(x\)
+                        </button>
+
+                        <button type="button" data-insert="x^2">
+                            \(x^2\)
+                        </button>
+
+                        <button type="button" data-insert="x^3">
+                            \(x^3\)
+                        </button>
+
+                        <button type="button" data-insert="\frac{#?}{#?}">
+                            \(\frac{a}{b}\)
+                        </button>
+
+                        <button type="button" data-insert="\sqrt{#?}">
+                            \(\sqrt{x}\)
+                        </button>
+
+                        <button type="button" data-insert="e^x">
+                            \(e^x\)
+                        </button>
+
+                        <button type="button" data-insert="\ln(x)">
+                            \(\ln x\)
+                        </button>
+
+                        <button type="button" data-insert="\pi">
+                            \(\pi\)
+                        </button>
+
+                        <button type="button" data-insert="\infty">
+                            \(\infty\)
+                        </button>
+
+                        <button type="button" data-insert="(">
+                            \((\)
+                        </button>
+
+                        <button type="button" data-insert=")">
+                            \()\)
+                        </button>
+
+                        <button type="button" id="borrarCampo">
+                            <i class="fa-solid fa-delete-left"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="integral-vista">
+                    <p>Integral construida</p>
+
+                    <div id="integralRender">
+                        \[
+                            I=\int_{-2}^{1}\frac{1}{(x+1)^3}\,dx
+                        \]
+                    </div>
+                </div>
+
+                <button class="boton" id="analizar" type="button">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    Analizar integral
+                </button>
+
+                <p class="aviso">
+                    El simulador reconoce las familias principales programadas.
+                    Si una integral todavía no está disponible, lo indicará
+                    sin inventar un resultado.
+                </p>
+
+            </section>
+
+            <section class="panel solucion">
+
+                <div class="panel-titulo">
+                    <i class="fa-solid fa-list-check"></i>
+
+                    <div>
+                        <h2>Procedimiento</h2>
+                        <p>Pasos generados automáticamente.</p>
+                    </div>
+                </div>
+
+                <div class="resumen" id="resumen">
+
+                    <div class="dato">
+                        <span>Caso</span>
+                        <strong>—</strong>
+                    </div>
+
+                    <div class="dato">
+                        <span>Método</span>
+                        <strong>—</strong>
+                    </div>
+
+                    <div class="dato">
+                        <span>Resultado</span>
+                        <strong>—</strong>
+                    </div>
+
+                </div>
+
+                <div class="pasos" id="pasos">
+
+                    <div class="estado-vacio">
+                        <i class="fa-solid fa-calculator"></i>
+
+                        <p>
+                            Construye una integral y presiona
+                            <strong>Analizar integral</strong>.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <section class="guia">
+
+    <h2>Familias reconocidas actualmente</h2>
+
+    <div class="guia-grid">
+
+        <article>
+            <strong>Potencias</strong>
+            <p>
+                \(\displaystyle \int_a^\infty \frac{1}{x^p}\,dx\)
+            </p>
+        </article>
+
+        <article>
+            <strong>Potencia desplazada</strong>
+            <p>
+                \(\displaystyle \int_a^b \frac{A}{(mx+c)^p}\,dx\)
+            </p>
+        </article>
+
+        <article>
+            <strong>Cuadrática</strong>
+            <p>
+                \(\displaystyle \int \frac{x}{(1+x^2)^2}\,dx\)
+            </p>
+        </article>
+
+        <article>
+            <strong>Logaritmos</strong>
+            <p>
+                \(\displaystyle \int \frac{1}{x(\ln x)^p}\,dx\)
+            </p>
+        </article>
+
+        <article>
+            <strong>Exponencial logarítmica</strong>
+            <p>
+                \(\displaystyle \int \frac{e^x}{e^x+1}\,dx\)
+            </p>
+        </article>
+
+        <article>
+            <strong>Tipo arctan</strong>
+            <p>
+                \(\displaystyle \int \frac{e^x}{e^{2x}+1}\,dx\)
+            </p>
+        </article>
+
+        <article>
+            <strong>Exponencial simétrica</strong>
+            <p>
+                \(\displaystyle \int \frac{1}{e^x+e^{-x}}\,dx\)
+            </p>
+        </article>
+
+        <article>
+            <strong>Arctan racional</strong>
+            <p>
+                \(\displaystyle \int \frac{1}{x^2+a^2}\,dx\)
+            </p>
+        </article>
+
+        <article>
+            <strong>Diferencia de cuadrados</strong>
+            <p>
+                \(\displaystyle \int \frac{1}{x^2-a^2}\,dx\)
+            </p>
+        </article>
+
+        <article>
+            <strong>Exponencial negativa</strong>
+            <p>
+                \(\displaystyle \int e^{-x}\,dx\)
+            </p>
+        </article>
+
+        <article>
+            <strong>Por partes</strong>
+            <p>
+                \(\displaystyle \int xe^{-x}\,dx\)
+            </p>
+        </article>
+
+        <article>
+            <strong>Por partes repetida</strong>
+            <p>
+                \(\displaystyle \int x^2e^{-x}\,dx\)
+            </p>
+        </article>
+
+        <article>
+            <strong>Raíz en el denominador</strong>
+            <p>
+                \(\displaystyle \int \frac{1}{\sqrt{x}}\,dx\)
+            </p>
+        </article>
+
+        <article>
+            <strong>Trigonométrica</strong>
+            <p>
+                \(\displaystyle \int \frac{1}{x\sqrt{x^2-a^2}}\,dx\)
+            </p>
+        </article>
+
+        <article>
+            <strong>Discontinuidad racional</strong>
+            <p>
+                \(\displaystyle \int \frac{1}{1-x}\,dx\)
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+    </main>
+
+</body>
+</html>

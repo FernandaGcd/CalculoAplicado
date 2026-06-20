@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Series de Taylor</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- MathJax -->
+<script>
+MathJax = {
+  tex: { inlineMath: [['\\(','\\)'],['$','$']] },
+  svg: { fontCache: 'global' }
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Math.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js"></script>
+</head>
+<body>
+<a href="../index.html" class="btn-volver">
+    ← Menú Principal
+</a>
+<!-- PANEL IZQUIERDO -->
+<div class="container">
+
+  <h1>Series de Taylor</h1>
+  <p>Aproxima funciones mediante polinomios centrados en un punto <em>a</em></p>
+
+  <!-- FUNCIÓN -->
+  <div class="form">
+
+    <div class="func-label">FUNCIÓN</div>
+    <div class="func-grid">
+      <button class="func-btn active" onclick="setFn(this,'sin')">sin(x)</button>
+      <button class="func-btn" onclick="setFn(this,'cos')">cos(x)</button>
+      <button class="func-btn" onclick="setFn(this,'exp')">eˣ</button>
+      <button class="func-btn" onclick="setFn(this,'ln')">ln(1+x)</button>
+      <button class="func-btn" onclick="setFn(this,'atan')">arctan(x)</button>
+      <button class="func-btn" onclick="setFn(this,'sinh')">sinh(x)</button>
+    </div>
+
+    <label>Número de términos (n):
+      <span id="nVal">5</span>
+    </label>
+    <div class="slider-wrap">
+      <span class="slider-edge">1</span>
+      <input type="range" id="nSlider" min="1" max="15" value="5" step="1" oninput="calcular()">
+      <span class="slider-edge">15</span>
+    </div>
+
+    <label>Centro a =
+      <span id="aVal">0</span>
+    </label>
+    <div class="slider-wrap">
+      <span class="slider-edge">−3</span>
+      <input type="range" id="aSlider" min="-3" max="3" value="0" step="0.5" oninput="calcular()">
+      <span class="slider-edge">3</span>
+    </div>
+
+    <label>Punto de evaluación x =
+      <span id="xVal">1.0</span>
+    </label>
+    <div class="slider-wrap">
+      <span class="slider-edge">−5</span>
+      <input type="range" id="xSlider" min="-5" max="5" value="1" step="0.1" oninput="calcular()">
+      <span class="slider-edge">5</span>
+    </div>
+
+  </div>
+
+  <!-- RESULTADOS -->
+  <div class="resultados">
+
+    <h2>Polinomio de Taylor</h2>
+    <div id="formulaBox"></div>
+
+    <h3>Valor exacto vs. aproximación</h3>
+    <div class="metricas">
+      <div class="metrica">
+        <div class="metrica-label">f(x) exacto</div>
+        <div class="metrica-val" id="exactVal">—</div>
+      </div>
+      <div class="metrica">
+        <div class="metrica-label">T(x) aprox.</div>
+        <div class="metrica-val" id="approxVal">—</div>
+      </div>
+      <div class="metrica err">
+        <div class="metrica-label">Error absoluto</div>
+        <div class="metrica-val" id="errAbs">—</div>
+      </div>
+      <div class="metrica err">
+        <div class="metrica-label">Error relativo</div>
+        <div class="metrica-val" id="errRel">—</div>
+      </div>
+    </div>
+
+    <h3>Pasos de la serie</h3>
+    <div id="pasosBox"></div>
+
+  </div>
+
+</div>
+
+<!-- PANEL DERECHO: GRÁFICA -->
+<div class="grafiquita">
+  <canvas id="grafica"></canvas>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

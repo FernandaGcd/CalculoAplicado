@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+:root{
+    --fondo:#09090f;
+    --panel:rgba(255,255,255,0.075);
+    --panel-secundario:rgba(255,255,255,0.045);
+    --borde:rgba(255,255,255,0.13);
+    --texto:#f8fafc;
+    --texto-secundario:#cbd5e1;
+    --texto-suave:#94a3b8;
+
+    --acento:#c084fc;
+    --acento-claro:#e9d5ff;
+    --acento-secundario:#22d3ee;
+    --sombra-acento:rgba(192,132,252,0.25);
+}
+
+body{
+    position:relative;
+    min-height:100vh;
+    margin:0;
+    padding:28px;
+    display:grid;
+    grid-template-columns:minmax(370px,495px) minmax(480px,1fr);
+    gap:24px;
+    align-items:start;
+    overflow-x:hidden;
+    background:
+        radial-gradient(circle at top left, rgba(150,33,182,0.58), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(21,126,142,0.42), transparent 34%),
+        var(--fondo);
+    color:var(--texto);
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:420px;height:420px;
+    top:-150px;left:-130px;
+    border-radius:50%;
+    background:#7c3aed;
+    filter:blur(125px);
+    opacity:0.20;
+    pointer-events:none;
+    z-index:0;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:390px;height:390px;
+    bottom:-150px;right:-110px;
+    border-radius:50%;
+    background:#0891b2;
+    filter:blur(125px);
+    opacity:0.19;
+    pointer-events:none;
+    z-index:0;
+}
+.btn-volver{
+    position:fixed;
+    top:25px;
+    left:25px;
+    z-index:999;
+
+    padding:12px 20px;
+    border-radius:14px;
+
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(12px);
+
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:500;
+
+    transition:.25s ease;
+}
+
+.btn-volver:hover{
+    transform:translateY(-2px);
+    background:rgba(192,132,252,0.18);
+    border-color:rgba(192,132,252,0.45);
+    box-shadow:0 8px 25px rgba(192,132,252,0.25);
+}
+
+/* ── Panel izquierdo ───────────────────────────────── */
+
+.container{
+    position:relative;
+    z-index:1;
+    width:100%;
+    padding:30px;
+    border-radius:28px;
+    background:var(--panel);
+    border:1px solid var(--borde);
+    backdrop-filter:blur(18px);
+    box-shadow:0 18px 45px rgba(0,0,0,0.30);
+}
+
+.container::before{
+    content:"Σ";
+    width:54px;height:54px;
+    display:grid;place-items:center;
+    margin-bottom:18px;
+    border-radius:16px;
+    font-family:Georgia,serif;
+    font-size:30px;font-weight:bold;
+    color:var(--acento-claro);
+    background:rgba(192,132,252,0.13);
+    border:1px solid rgba(192,132,252,0.21);
+}
+
+h1{
+    margin-bottom:7px;
+    font-size:34px;line-height:1.15;letter-spacing:-1px;
+    background:linear-gradient(90deg,#ffffff,var(--acento-claro),#67e8f9);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.container > p{
+    color:var(--texto-secundario);
+    font-size:15px;font-weight:300;
+    margin-bottom:25px;
+}
+
+/* ── Formulario ────────────────────────────────────── */
+
+.form{
+    background:var(--panel-secundario);
+    padding:22px;
+    border-radius:20px;
+    margin-bottom:20px;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.func-label{
+    font-size:11px;font-weight:600;letter-spacing:1.4px;
+    color:var(--texto-suave);
+    margin-bottom:12px;
+}
+
+.func-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-bottom:20px;
+}
+
+.func-btn{
+    padding:10px 8px;
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:12px;
+    background:rgba(0,0,0,0.22);
+    color:var(--texto-secundario);
+    font-size:13px;font-weight:500;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.func-btn:hover{
+    border-color:rgba(192,132,252,0.4);
+    background:rgba(192,132,252,0.08);
+}
+
+.func-btn.active{
+    border-color:rgba(192,132,252,0.7);
+    background:rgba(192,132,252,0.15);
+    color:var(--acento-claro);
+}
+
+label{
+    display:block;
+    margin:16px 0 8px;
+    color:var(--texto-secundario);
+    font-size:13px;font-weight:500;
+}
+
+.slider-wrap{
+    display:flex;align-items:center;gap:10px;
+}
+
+.slider-wrap input[type=range]{
+    flex:1;
+    accent-color:var(--acento);
+}
+
+.slider-edge{
+    font-size:12px;color:var(--texto-suave);
+    min-width:18px;text-align:center;
+}
+
+/* ── Resultados ────────────────────────────────────── */
+
+.resultados{
+    background:var(--panel-secundario);
+    padding:22px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.resultados h2{
+    display:flex;align-items:center;gap:10px;
+    font-size:20px;letter-spacing:-0.4px;
+    margin-bottom:14px;
+}
+
+.resultados h2::before{
+    content:"";
+    width:5px;height:24px;
+    border-radius:999px;
+    background:linear-gradient(var(--acento),var(--acento-secundario));
+}
+
+.resultados h3{
+    margin:18px 0 10px;
+    padding-top:15px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    color:var(--acento-claro);
+    font-size:14px;font-weight:500;
+}
+
+#formulaBox{
+    padding:14px;
+    border-radius:13px;
+    background:rgba(192,132,252,0.07);
+    border:1px solid rgba(192,132,252,0.15);
+    overflow-x:auto;
+    color:white;
+    min-height:52px;
+}
+
+.metricas{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.metrica{
+    padding:12px 14px;
+    border-radius:13px;
+    background:rgba(0,0,0,0.22);
+    border:1px solid rgba(255,255,255,0.07);
+}
+
+.metrica.err{
+    border-color:rgba(249,115,22,0.20);
+    background:rgba(249,115,22,0.06);
+}
+
+.metrica-label{
+    font-size:11px;color:var(--texto-suave);
+    margin-bottom:5px;letter-spacing:0.5px;
+}
+
+.metrica-val{
+    font-size:17px;font-weight:600;
+    color:var(--texto);
+}
+
+.metrica.err .metrica-val{
+    color:#fb923c;
+}
+
+#pasosBox{
+    padding:14px;
+    border-radius:13px;
+    background:rgba(0,0,0,0.20);
+    border:1px solid rgba(255,255,255,0.06);
+    overflow-x:auto;
+    color:white;
+    font-size:13px;
+}
+
+.pasos-tabla{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+.pasos-tabla td{
+    padding:5px 8px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    color:var(--texto-secundario);
+    font-size:12px;
+}
+
+.pasos-tabla td:last-child{
+    color:var(--acento-claro);
+    font-weight:500;
+}
+
+.mas-terminos{
+    text-align:center;
+    color:var(--texto-suave) !important;
+    padding-top:8px !important;
+}
+
+/* ── Panel gráfica ──────────────────────────────────── */
+
+.grafiquita{
+    position:sticky;top:28px;
+    z-index:1;
+    width:100%;
+    height:calc(100vh - 56px);
+    min-height:670px;
+    padding:26px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:28px;
+    background:var(--panel);
+    border:1px solid var(--borde);
+    backdrop-filter:blur(18px);
+    box-shadow:0 18px 45px rgba(0,0,0,0.30);
+}
+
+.grafiquita::before{
+    content:"Visualización de la aproximación";
+    position:absolute;top:28px;left:30px;
+    color:var(--texto);
+    font-size:20px;font-weight:600;letter-spacing:-0.5px;
+}
+
+.grafiquita::after{
+    content:"Función exacta vs. polinomio de Taylor";
+    position:absolute;top:62px;left:30px;
+    color:var(--texto-suave);font-size:13px;
+}
+
+canvas{
+    display:block;
+    width:100% !important;
+    height:min(67vh,660px) !important;
+    margin-top:56px;
+    padding:16px;
+    border-radius:20px;
+    background:rgba(0,0,0,0.22);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+/* ── MathJax ────────────────────────────────────────── */
+
+mjx-container{
+    color:white !important;
+    max-width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+}
+
+/* ── Responsivo ─────────────────────────────────────── */
+
+@media(max-width:1100px){
+    body{
+        display:flex;flex-direction:column;
+        padding:20px;
+    }
+    .container,.grafiquita{ width:100%; }
+    .grafiquita{
+        position:relative;top:auto;
+        height:auto;min-height:520px;
+    }
+    canvas{ height:470px !important; }
+}
+
+@media(max-width:650px){
+    body{ padding:13px; }
+    .container,.grafiquita{ padding:20px;border-radius:22px; }
+    h1{ font-size:28px; }
+    .form,.resultados{ padding:16px; }
+    .grafiquita{ min-height:400px; }
+    .grafiquita::before{ top:20px;left:20px;font-size:18px; }
+    .grafiquita::after{ top:50px;left:20px; }
+    canvas{ margin-top:58px;height:300px !important;padding:8px; }
+    .metricas{ grid-template-columns:1fr; }
+}
